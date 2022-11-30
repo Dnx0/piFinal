@@ -35,7 +35,7 @@ if(isset($_POST['registrar']))
         else
         {
             $_SESSION['message'] = "Erro no registro";
-            header('Location: ../registroAdm.php');
+            header('Location: ../cadastro/cadastroAdm.php');
         }
     }
    

@@ -1,5 +1,6 @@
 <?php 
 include('../includes/header.php');
+include ('../função/salvarCategoria.php')
 
  ?>
 
@@ -24,12 +25,13 @@ include('../includes/header.php');
                     <h4> Cadastro de produtos</h4>
                 </div>
                 <div class="card-body">
-                    <!-- Leva para a função authcode que grava no banco de Dados -->
-                    <form action="../função/authcode.php" method="POST">
+                    <!-- Leva para a função salvarCategoria.php que grava no banco de Dados -->
+                    <form action="../função/salvarCategoria.php" method="POST">
                     <div class="mb-3">
                             <label  class="form-label">Nome da categoria</label>
                             <input type="text" name="CATEGORIA_NOME" class="form-control"  placeholder="Digite o nome da categoria">                      
                     </div> 
+                     <!--Textarea para escrever uma descrição e ficar maior que os inputs de texto  -->
                     <div class="mb-3">
                             <label  class="form-label">Descrição</label>
                             <textarea  type="text" name="CATEGORIA_DESC" class="form-control"  placeholder="Descrição da categoria"> </textarea>              
@@ -48,12 +50,11 @@ include('../includes/header.php');
 
 
 <h1>Listar Categoria</h1>
-/*<?php
-$sql = "SELECT * FROM admin";
+<?php
+$sql = "SELECT * FROM CATEGORIA ORDER BY CATEGORIA_ID";
+$result = $con->query($sql);
 
-$res = $conn->query($sql);
-
-$qtd = $res->num_rows;
+$qtd = $result->num_rows;
 
 if($qtd > 0)
 {
@@ -61,16 +62,18 @@ if($qtd > 0)
     print "<tr>";
     print "<th>id</th>";
     print "<th>Categoria</th>";   
-    print "<th>Criado em</th>";
-    print "<th>Ações</th>";
+    print "<th>Descrição</th>"; 
+    print "<th>Situação</th>";  
+    print "<th>Ações</th>";  
     print "</tr>";  
-    while($row = $res->fetch_object()){
+    while($row = $result->fetch_object()){
         print "<tr>";
-        print "<td>".$row->idCat."</td>";
-        print "<td>".$row->nomeCat."</td>";       
-        print "<td>".$row->criadoCat."</td>";
+        print "<td>".$row->CATEGORIA_ID."</td>";
+        print "<td>".$row->CATEGORIA_NOME."</td>";       
+        print "<td>".$row->CATEGORIA_DESC."</td>";
+        print "<td>".$row->CATEGORIA_ATIVO."</td>";
         print "<td>
-                <button onclick=\"location.href='?page=editar&id=".$row->id."'\" class='btn btn-sucess'>Editar</button>
+                <button class='btn btn-success'>Editar</button>
                 <button class='btn btn-danger'>Excluir</button>
             </td>";
         print "</tr>";
@@ -79,7 +82,7 @@ if($qtd > 0)
 }
 else
 {
-    print "p class='alert alert-danger'> Nenhum usuário cadastrado</p>";
+    print "p class='alert alert-danger'> Nenhuma categoria cadastrada</p>";
 }
 
 

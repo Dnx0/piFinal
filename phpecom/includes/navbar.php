@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
   <div class="container">
-    <a class="navbar-brand" href="#">CharlieBookstore</a>
+    <a class="navbar-brand" href="http://localhost/phpecom/index.php">CharlieBookstore</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,7 +21,7 @@
           <a class="nav-link" href="http://localhost/phpecom/cadastro/cadastroCategoria.php">Categoria</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="hover" data-bs-toggle="dropdown" >
             Produto
           </a>
           <ul class="dropdown-menu">
